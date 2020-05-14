@@ -1,10 +1,14 @@
 <template>
-    <div class="text-center">
+    <div class="text-center form-center">
         <h1>TO-DO</h1>
         <h2>List</h2>
         <br><br>
         <h3>What do you want TO-DO?</h3>
         <input class="form-control" type="text" v-model="setTask" placeholder="Learn Vue.js">
+        <div class="my-invalid-feedback" v-if="!somethingAdded">
+            Its too easy TO-DO nothing!
+        </div>
+        <br><br>
         <h3>Set Priority</h3>
         <select v-model="setPriority" class="form-control">
             <option v-for="priority in priorities" :value="priority">{{ priority }}</option>
@@ -27,7 +31,8 @@
                 setClass: '',
                 setPriority: 'Medium',
                 priorities: ['Low', 'Medium', 'Extreme'],
-                alert: ''
+                alert: '',
+                somethingAdded: true
             }
         },
         props: {
@@ -36,7 +41,7 @@
         methods: {
             addTask() {
                 if (this.setTask === '') {
-                   return alert('Please fill all input fields.')
+                   this.somethingAdded = false;
                 }
                 else {
                     if (this.setPriority === 'Low') {
@@ -53,6 +58,7 @@
                     }
                     this.toDo.push({task: this.setTask, priority: this.setPriority, class: this.setClass, alert: this.alert});
                     this.setTask = '';
+                    this.somethingAdded = true;
                 }
             }
         },
@@ -65,5 +71,17 @@
 </script>
 
 <style>
+    .form-center {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 10px;
+    }
 
+    .my-invalid-feedback {
+        width: 100%;
+        margin-top: .25rem;
+        font-size: 80%;
+        color: #dc3545;
+    }
 </style>

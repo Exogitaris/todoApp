@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
                     <app-inputs :toDo="toDo"></app-inputs>
+                <hr>
                     <app-list :toDo="toDo"></app-list>
             </div>
         </div>
@@ -27,4 +28,7 @@
 </script>
 
 <style>
+    body {
+        background-image: url('white-background.png');
+    }
 </style>
