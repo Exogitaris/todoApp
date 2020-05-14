@@ -5,7 +5,7 @@
         <br><br>
         <h3>What do you want TO-DO?</h3>
         <input class="form-control" type="text" v-model="setTask" placeholder="Learn Vue.js">
-        <div class="my-invalid-feedback" v-if="!somethingAdded">
+        <div class="my-invalid-feedback alert alert-danger" v-if="!somethingAdded">
             Its too easy TO-DO nothing!
         </div>
         <br><br>
@@ -73,7 +73,7 @@
 <style>
     .form-center {
         background-color: white;
-        border-radius: 10px;
+        border-radius: 15px;
         padding: 20px;
         margin-top: 10px;
     }
