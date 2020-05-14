@@ -1,10 +1,16 @@
 <template>
     <div>
-        <div v-for="(element, index) in toDo" :class="element.class">
-            <div class="remove-item" @click="removeItem(index)">&times;</div>
-            <component style="display: inline-block" :is="alert"></component>
-            <div style="display: inline-block">{{ element.task }} |</div>
-            <div style="display: inline-block" >PRIORITY = {{ element.priority }}</div>
+        <div v-for="(element, index) in toDo">
+            <div class="list-group">
+                <div :class="element.class">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ element.task }}</h5>
+                        <small style="font-size: 20px; cursor: pointer" @click="removeItem(index)">&times;</small>
+                    </div>
+                    <p class="mb-1">Priority: {{ element.priority }}</p>
+                    <small><component style="display: inline-block" :is="element.alert"></component></small>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -12,8 +18,7 @@
 <script>
     export default {
         props: {
-            toDo: Array,
-            alert: Object
+            toDo: Array
         },
         methods: {
             removeItem(index) {

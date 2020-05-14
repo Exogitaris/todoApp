@@ -16,13 +16,18 @@
 </template>
 
 <script>
+    import SingleAlert from "./alerts/SingleAlert.vue";
+    import DoubleAlert from "./alerts/DoubleAlert.vue";
+    import TripleAlert from "./alerts/TripleAlert.vue";
+
     export default {
         data() {
             return {
                 setTask: '',
-                setPriority: 'Medium',
                 setClass: '',
-                priorities: ['Low', 'Medium', 'Extreme']
+                setPriority: 'Medium',
+                priorities: ['Low', 'Medium', 'Extreme'],
+                alert: ''
             }
         },
         props: {
@@ -35,19 +40,26 @@
                 }
                 else {
                     if (this.setPriority === 'Low') {
-                        this.setClass = 'alert alert-primary'
+                        this.setClass = 'alert alert-primary';
+                        this.alert = SingleAlert;
                     }
                     else if (this.setPriority === 'Medium') {
-                        this.setClass = 'alert alert-warning'
+                        this.setClass = 'alert alert-warning';
+                        this.alert = DoubleAlert;
                     }
                     else if (this.setPriority === 'Extreme') {
-                        this.setClass = 'alert alert-danger'
+                        this.setClass = 'alert alert-danger';
+                        this.alert = TripleAlert;
                     }
-                    this.toDo.push({task: this.setTask, priority: this.setPriority, class: this.setClass});
-                    this.$emit('priorityAdded', this.setPriority);
-                    this.$emit('alertChanger');
+                    this.toDo.push({task: this.setTask, priority: this.setPriority, class: this.setClass, alert: this.alert});
+                    this.setTask = '';
                 }
             }
+        },
+        components: {
+            appSingleAlert: SingleAlert,
+            appDoubleAlert: DoubleAlert,
+            appTripleAlert: TripleAlert
         }
     }
 </script>
