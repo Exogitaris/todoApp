@@ -1,7 +1,9 @@
 <template>
     <div class="text-center form-center">
-        <h1>TO-DO</h1>
-        <h2>List</h2>
+        <div class="alert alert-info" style="color: rgba(0, 0, 0, 0.83)">
+            <h1>TO-DO</h1>
+            <h2>List</h2>
+        </div>
         <br><br>
         <h3>What do you want TO-DO?</h3>
         <input class="form-control" type="text" v-model="setTask" placeholder="Learn Vue.js">
@@ -56,7 +58,7 @@
                         this.setClass = 'alert alert-danger';
                         this.alert = TripleAlert;
                     }
-                    this.toDo.push({task: this.setTask, priority: this.setPriority, class: this.setClass, alert: this.alert});
+                    this.toDo.push({task: this.setTask, priority: this.setPriority, class: this.setClass, alert: this.alert, p: 'Priority'});
                     this.setTask = '';
                     this.somethingAdded = true;
                 }
@@ -71,6 +73,7 @@
 </script>
 
 <style>
+
     .form-center {
         background-color: white;
         border-radius: 15px;

@@ -4,7 +4,9 @@
             <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
                     <app-inputs :toDo="toDo"></app-inputs>
                 <hr>
+                <keep-alive>
                     <app-list :toDo="toDo"></app-list>
+                </keep-alive>
             </div>
         </div>
     </div>
