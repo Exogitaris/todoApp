@@ -13,8 +13,6 @@
                     </small>
                     <small class="check" :class="element.completed" @click="completeTask(index)"><font-awesome-icon icon="check" size="1x" /></small>
                 </div>
-                <button @click="setFix(index)">Test</button>
-                <button @click="testFunkce(index)">test funkce</button>
             </div>
         </div>
     </div>
@@ -29,24 +27,22 @@
             removeItem(index) {
                 this.toDo.splice(index, 1);
             },
-            testFunkce (index) {
-                if (this.toDo[index].class === 'alert alert-success') {
-                    this.$set(this.toDo[index], 'class', this.toDo[index].fixClass);
-                }
-            },
             completeTask(index) {
-                this.$set(this.toDo[index], 'class', 'alert alert-success');
-                this.$set(this.toDo[index], 'p', '');
-                this.$set(this.toDo[index], 'alert', '');
-                this.$set(this.toDo[index], 'priority', 'Completed!');
-                this.$set(this.toDo[index], 'completed', 'completed');
-            },
-            setFix(index) {
-                this.$set(this.toDo[index], 'priority', this.toDo[index].fixPriority);
-                this.$set(this.toDo[index], 'p', this.toDo[index].fixP);
-                this.$set(this.toDo[index], 'alert', this.toDo[index].fixAlert);
-                this.$set(this.toDo[index], 'class', this.toDo[index].fixClass);
-                this.$set(this.toDo[index], 'completed', 'notCompleted');
+                if (this.toDo[index].class !== 'alert alert-success') {
+                    this.$set(this.toDo[index], 'class', 'alert alert-success');
+                    this.$set(this.toDo[index], 'p', '');
+                    this.$set(this.toDo[index], 'alert', '');
+                    this.$set(this.toDo[index], 'priority', 'Completed!');
+                    this.$set(this.toDo[index], 'completed', 'completed');
+                }
+                else {
+                    this.$set(this.toDo[index], 'priority', this.toDo[index].fixPriority);
+                    this.$set(this.toDo[index], 'p', this.toDo[index].fixP);
+                    this.$set(this.toDo[index], 'alert', this.toDo[index].fixAlert);
+                    this.$set(this.toDo[index], 'class', this.toDo[index].fixClass);
+                    this.$set(this.toDo[index], 'completed', 'notCompleted');
+                }
+
             }
         }
     }
