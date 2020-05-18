@@ -4,7 +4,7 @@
             <div :class="element.class">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">{{ element.task }}</h5>
-                    <small class="trash" @click="removeItem(index)"><font-awesome-icon icon="backspace" size="1x" /></small>
+                    <small><font-awesome-icon icon="backspace" class="trash" size="1x" @click="removeItem(index)" /></small>
                 </div>
                 <div class="d-flex w-100 justify-content-between">
                     <small>
