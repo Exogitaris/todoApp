@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="(element, index) in toDo">
+        <div v-for="(element, index) in toDo" class="shadow">
             <div :class="element.class">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">{{ element.task }}</h5>
@@ -11,8 +11,10 @@
                         <div class="mb-1" style="display: inline-block">{{ element.priority }} {{ element.p }}</div>
                         <component :is="element.alert" style="display: inline-block"></component>
                     </small>
-                    <small class="check" @click="completeTask(index)"><font-awesome-icon icon="check" size="1x" /></small>
+                    <small class="check" :class="element.completed" @click="completeTask(index)"><font-awesome-icon icon="check" size="1x" /></small>
                 </div>
+                <button @click="setFix(index)">Test</button>
+                <button @click="testFunkce(index)">test funkce</button>
             </div>
         </div>
     </div>
@@ -27,11 +29,24 @@
             removeItem(index) {
                 this.toDo.splice(index, 1);
             },
+            testFunkce (index) {
+                if (this.toDo[index].class === 'alert alert-success') {
+                    this.$set(this.toDo[index], 'class', this.toDo[index].fixClass);
+                }
+            },
             completeTask(index) {
                 this.$set(this.toDo[index], 'class', 'alert alert-success');
                 this.$set(this.toDo[index], 'p', '');
                 this.$set(this.toDo[index], 'alert', '');
                 this.$set(this.toDo[index], 'priority', 'Completed!');
+                this.$set(this.toDo[index], 'completed', 'completed');
+            },
+            setFix(index) {
+                this.$set(this.toDo[index], 'priority', this.toDo[index].fixPriority);
+                this.$set(this.toDo[index], 'p', this.toDo[index].fixP);
+                this.$set(this.toDo[index], 'alert', this.toDo[index].fixAlert);
+                this.$set(this.toDo[index], 'class', this.toDo[index].fixClass);
+                this.$set(this.toDo[index], 'completed', 'notCompleted');
             }
         }
     }
@@ -54,5 +69,21 @@
 
     .check:hover {
         color: lightgreen;
+    }
+
+    .completed {
+        color: lightgreen;
+    }
+
+    .completed:hover {
+        color: #dc3545;
+    }
+
+    .notCompleted {
+        color: rgba(0, 0, 0, 0.83);
+    }
+
+    .shadow {
+        box-shadow: 0 10px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 </style>

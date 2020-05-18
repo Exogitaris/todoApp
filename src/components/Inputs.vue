@@ -6,7 +6,7 @@
         </div>
         <br><br>
         <h3>What do you want TO-DO?</h3>
-        <input class="form-control" type="text" v-model="setTask" placeholder="Learn Vue.js">
+        <input class="form-control" type="text" v-model="setTask" placeholder="Learn Vue.js" @keyup.enter="addTask">
         <div class="my-invalid-feedback alert alert-danger" v-if="!somethingAdded">
             Its too easy TO-DO nothing!
         </div>
@@ -58,7 +58,8 @@
                         this.setClass = 'alert alert-danger';
                         this.alert = TripleAlert;
                     }
-                    this.toDo.push({task: this.setTask, priority: this.setPriority, class: this.setClass, alert: this.alert, p: 'Priority'});
+                    this.toDo.push({task: this.setTask, priority: this.setPriority, class: this.setClass, alert: this.alert, p: 'Priority',
+                    completed: '', fixPriority: this.setPriority, fixClass: this.setClass, fixAlert: this.alert, fixP: 'Priority'});
                     this.setTask = '';
                     this.somethingAdded = true;
                 }
@@ -67,7 +68,7 @@
         components: {
             appSingleAlert: SingleAlert,
             appDoubleAlert: DoubleAlert,
-            appTripleAlert: TripleAlert
+            appTripleAlert: TripleAlert,
         }
     }
 </script>
@@ -79,6 +80,7 @@
         border-radius: 15px;
         padding: 20px;
         margin-top: 10px;
+        box-shadow: 0 10px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
     .my-invalid-feedback {
