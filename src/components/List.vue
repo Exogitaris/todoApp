@@ -21,10 +21,21 @@
 <script>
     export default {
         props: {
-            toDo: Array
+            toDo: Array,
+            trash: Array
         },
         methods: {
             removeItem(index) {
+                this.trash.push({task: this.toDo[index].task,
+                    priority: this.toDo[index].priority,
+                    class: this.toDo[index].class,
+                    alert: this.toDo[index].alert,
+                    p: this.toDo[index].p,
+                    completed: this.toDo[index].completed,
+                    fixPriority: this.toDo[index].fixPriority,
+                    fixClass: this.toDo[index].fixClass,
+                    fixAlert: this.toDo[index].fixAlert,
+                    fixP: this.toDo[index].fixPriority})
                 this.toDo.splice(index, 1);
             },
             completeTask(index) {

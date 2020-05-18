@@ -18,6 +18,8 @@
         <br><br>
         <button class="btn btn-primary" @click="addTask">Add Me!</button>
         <br><br>
+        <button v-if="trash.length !== 0" @click="trashActive" class="btn btn-danger">Save Me! <font-awesome-icon icon="trash-restore" size="1x"/></button>
+        <button v-if="this.trashActivated === true" @click="trashActive" class="btn btn-danger">Go Back <font-awesome-icon icon="arrow-left" size="1x"/></button>
     </div>
 </template>
 
@@ -39,6 +41,8 @@
         },
         props: {
             toDo: Array,
+            trash: Array,
+            trashActivated: Boolean
         },
         methods: {
             addTask() {
@@ -58,11 +62,22 @@
                         this.setClass = 'alert alert-danger';
                         this.alert = TripleAlert;
                     }
-                    this.toDo.push({task: this.setTask, priority: this.setPriority, class: this.setClass, alert: this.alert, p: 'Priority',
-                    completed: '', fixPriority: this.setPriority, fixClass: this.setClass, fixAlert: this.alert, fixP: 'Priority'});
+                    this.toDo.push({task: this.setTask,
+                        priority: this.setPriority,
+                        class: this.setClass,
+                        alert: this.alert,
+                        p: 'Priority',
+                        completed: '',
+                        fixPriority: this.setPriority,
+                        fixClass: this.setClass,
+                        fixAlert: this.alert,
+                        fixP: 'Priority'});
                     this.setTask = '';
                     this.somethingAdded = true;
                 }
+            },
+            trashActive() {
+                this.$emit('trashWasActivated');
             }
         },
         components: {
@@ -74,7 +89,6 @@
 </script>
 
 <style>
-
     .form-center {
         background-color: white;
         border-radius: 15px;
