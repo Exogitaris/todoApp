@@ -10,9 +10,8 @@
                 <hr>
                     <app-list v-if="!trashActivated" :toDo="toDo"
                               :trash="trash">
-
                     </app-list>
-                <app-trash v-else :trash="trash"></app-trash>
+                <app-trash v-else :trash="trash" :toDo="toDo"></app-trash>
             </div>
         </div>
     </div>
@@ -38,12 +37,7 @@
         },
         methods: {
             toggleTrash() {
-                if (this.trashActivated === false) {
-                    this.trashActivated = true;
-                }
-                else {
-                    this.trashActivated = false;
-                }
+                this.trashActivated = this.trashActivated === false;
             }
         }
     }

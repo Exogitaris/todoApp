@@ -7,12 +7,16 @@ import { faBackspace } from '@fortawesome/free-solid-svg-icons'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { faTrashRestore } from '@fortawesome/free-solid-svg-icons'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faSkull} from '@fortawesome/free-solid-svg-icons'
+import { faBriefcaseMedical} from '@fortawesome/free-solid-svg-icons'
 
 library.add(faExclamation);
 library.add(faBackspace);
 library.add(faCheck);
 library.add(faTrashRestore);
 library.add(faArrowLeft);
+library.add(faSkull);
+library.add(faBriefcaseMedical);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 new Vue({

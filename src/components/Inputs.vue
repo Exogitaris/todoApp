@@ -18,7 +18,7 @@
         <br><br>
         <button class="btn btn-primary" @click="addTask">Add Me!</button>
         <br><br>
-        <button v-if="trash.length !== 0" @click="trashActive" class="btn btn-danger">Save Me! <font-awesome-icon icon="trash-restore" size="1x"/></button>
+        <button v-if="trash.length !== 0 && this.trashActivated === false" @click="trashActive" class="btn btn-danger">Save Me! <font-awesome-icon icon="trash-restore" size="1x"/></button>
         <button v-if="this.trashActivated === true" @click="trashActive" class="btn btn-danger">Go Back <font-awesome-icon icon="arrow-left" size="1x"/></button>
     </div>
 </template>

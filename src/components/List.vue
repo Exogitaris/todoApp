@@ -59,7 +59,7 @@
     }
 </script>
 
-<style>
+<style scoped>
     .trash {
         cursor: pointer;
         color: rgba(0, 0, 0, 0.83);
